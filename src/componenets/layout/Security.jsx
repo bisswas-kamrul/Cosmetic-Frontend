@@ -33,7 +33,7 @@ const Security = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:4000/change-password",
+        "https://cosmetic-backend-e6ia.onrender.com/change-password",
         { oldPassword, newPassword, confirmPassword },
         {
           headers: {

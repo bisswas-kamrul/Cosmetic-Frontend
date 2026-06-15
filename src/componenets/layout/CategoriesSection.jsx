@@ -8,7 +8,9 @@ const CategoriesSection = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/Show");
+        const res = await axios.get(
+          "https://cosmetic-backend-e6ia.onrender.com/Show",
+        );
         setCategories(res.data.data);
       } catch (error) {
         console.error("Error fetching categories:", error);

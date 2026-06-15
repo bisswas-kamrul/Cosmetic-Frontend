@@ -48,11 +48,14 @@ const Notifications = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:4000/notifications", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await axios.get(
+        "https://cosmetic-backend-e6ia.onrender.com/notifications",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       const data = res.data?.data || [];
       setNotifications(data);
       saveToLocal(data);
@@ -72,7 +75,7 @@ const Notifications = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.put(
-        `http://localhost:4000/notifications/${notificationId}/read`,
+        `https://cosmetic-backend-e6ia.onrender.com/notifications/${notificationId}/read`,
         null,
         {
           headers: {
@@ -102,11 +105,15 @@ const Notifications = () => {
     setUpdating(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.put("http://localhost:4000/notifications/read-all", null, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.put(
+        "https://cosmetic-backend-e6ia.onrender.com/notifications/read-all",
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       const updated = notifications.map((item) => ({ ...item, isRead: true }));
       setNotifications(updated);
       saveToLocal(updated);

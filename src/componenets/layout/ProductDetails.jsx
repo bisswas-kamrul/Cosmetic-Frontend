@@ -25,12 +25,12 @@ const ProductDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:4000/singleproduct/${id}`)
+      .get(`https://cosmetic-backend-e6ia.onrender.com/singleproduct/${id}`)
       .then((res) => setProduct(res.data.data))
       .catch((error) => console.error(error));
 
     axios
-      .get(`http://localhost:4000/products/${id}/reviews`)
+      .get(`https://cosmetic-backend-e6ia.onrender.com/products/${id}/reviews`)
       .then((res) => setReviews(res.data.data || []))
       .catch((error) => console.error(error));
   }, [id]);
@@ -52,7 +52,7 @@ const ProductDetails = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:4000/products/${id}/reviews`,
+        `https://cosmetic-backend-e6ia.onrender.com/products/${id}/reviews`,
         reviewForm,
         {
           headers: {

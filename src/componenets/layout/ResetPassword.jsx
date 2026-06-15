@@ -14,11 +14,14 @@ const ResetPassword = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:4000/ResetPassword", {
-        email,
-        otp,
-        newpassword,
-      });
+      const res = await axios.post(
+        "https://cosmetic-backend-e6ia.onrender.com/ResetPassword",
+        {
+          email,
+          otp,
+          newpassword,
+        },
+      );
 
       alert(res.data.message);
       navigate("/Login");

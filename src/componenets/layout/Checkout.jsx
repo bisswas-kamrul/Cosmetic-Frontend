@@ -51,16 +51,19 @@ const Checkout = () => {
     try {
       setLoadingCoupon(true);
 
-      const res = await fetch("http://localhost:4000/Apply-Coupon", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        "https://cosmetic-backend-e6ia.onrender.com/Apply-Coupon",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            code: couponCode,
+            totalAmount,
+          }),
         },
-        body: JSON.stringify({
-          code: couponCode,
-          totalAmount,
-        }),
-      });
+      );
 
       const data = await res.json();
 
@@ -126,14 +129,17 @@ const Checkout = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:4000/Checkout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // 🔥 IMPORTANT
+      const res = await fetch(
+        "https://cosmetic-backend-e6ia.onrender.com/Checkout",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // 🔥 IMPORTANT
+          },
+          body: JSON.stringify(orderData),
         },
-        body: JSON.stringify(orderData),
-      });
+      );
 
       const data = await res.json();
 

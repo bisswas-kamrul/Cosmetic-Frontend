@@ -13,10 +13,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:4000/login", {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        "https://cosmetic-backend-e6ia.onrender.com/login",
+        {
+          email,
+          password,
+        },
+      );
 
       // Save token
       localStorage.setItem("token", data.token);

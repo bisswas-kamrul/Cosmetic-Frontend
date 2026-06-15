@@ -4,7 +4,7 @@ const OfferShow = () => {
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/Offer-Show")
+    fetch("https://cosmetic-backend-e6ia.onrender.com/Offer-Show")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

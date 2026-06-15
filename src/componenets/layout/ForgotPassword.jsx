@@ -12,9 +12,12 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
 
-      const res = await axios.post("http://localhost:4000/ForgotPassword", {
-        email,
-      });
+      const res = await axios.post(
+        "https://cosmetic-backend-e6ia.onrender.com/ForgotPassword",
+        {
+          email,
+        },
+      );
 
       alert(res.data.message);
       setEmail("");

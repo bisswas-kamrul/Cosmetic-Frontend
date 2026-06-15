@@ -19,7 +19,9 @@ const ProductsSection = () => {
   useEffect(() => {
     const ProductShow = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/ShowProduct");
+        const res = await axios.get(
+          "https://cosmetic-backend-e6ia.onrender.com/ShowProduct",
+        );
         setProducts(res.data.data);
       } catch (error) {
         console.error("Error fetching Product:", error);

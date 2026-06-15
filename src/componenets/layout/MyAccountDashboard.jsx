@@ -40,11 +40,14 @@ const MyAccountDashboard = () => {
       try {
         const token = localStorage.getItem("token");
 
-        const { data } = await axios.get("http://localhost:4000/My-Order", {
-          headers: {
-            Authorization: `Bearer ${token}`,
+        const { data } = await axios.get(
+          "https://cosmetic-backend-e6ia.onrender.com/My-Order",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
 
         setOrders(data.orders);
       } catch (error) {

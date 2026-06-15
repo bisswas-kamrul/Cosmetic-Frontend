@@ -48,11 +48,14 @@ const Wishlist = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:4000/wishlist", {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = await axios.get(
+        "https://cosmetic-backend-e6ia.onrender.com/wishlist",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
 
       const data = res.data?.data || [];
       setItems(data);
@@ -72,11 +75,14 @@ const Wishlist = () => {
     setRemoving(productId);
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:4000/wishlist/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      await axios.delete(
+        `https://cosmetic-backend-e6ia.onrender.com/wishlist/${productId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       const updated = items.filter((item) => item.productId?._id !== productId);
       setItems(updated);
       saveToLocal(updated);

@@ -10,7 +10,7 @@ const Futter = () => {
   const [email, setEmail] = useState("");
 
   const handleSubscribe = async () => {
-    await fetch("http://localhost:4000/Subscriber", {
+    await fetch("https://cosmetic-backend-e6ia.onrender.com/Subscriber", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

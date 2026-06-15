@@ -37,12 +37,12 @@ const VendorDashboard = () => {
       setLoading(true);
 
       const [productRes, orderRes] = await Promise.all([
-        axios.get("http://localhost:4000/my-products", {
+        axios.get("https://cosmetic-backend-e6ia.onrender.com/my-products", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }),
-        axios.get("http://localhost:4000/Vendor-Orders", {
+        axios.get("https://cosmetic-backend-e6ia.onrender.com/Vendor-Orders", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -111,16 +111,20 @@ const VendorDashboard = () => {
     try {
       if (editingId) {
         await axios.put(
-          `http://localhost:4000/UpdateCreate/${editingId}`,
+          `https://cosmetic-backend-e6ia.onrender.com/UpdateCreate/${editingId}`,
           formData,
           {
             headers: authHeaders,
           },
         );
       } else {
-        await axios.post("http://localhost:4000/create", formData, {
-          headers: authHeaders,
-        });
+        await axios.post(
+          "https://cosmetic-backend-e6ia.onrender.com/create",
+          formData,
+          {
+            headers: authHeaders,
+          },
+        );
       }
 
       resetForm();
@@ -150,9 +154,12 @@ const VendorDashboard = () => {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:4000/DeleteProduct/${id}`, {
-        headers: authHeaders,
-      });
+      await axios.delete(
+        `https://cosmetic-backend-e6ia.onrender.com/DeleteProduct/${id}`,
+        {
+          headers: authHeaders,
+        },
+      );
 
       fetchVendorData();
     } catch (error) {
@@ -163,7 +170,7 @@ const VendorDashboard = () => {
   const updateOrderStatus = async (orderId, status) => {
     try {
       await axios.put(
-        `http://localhost:4000/Vendor-Orders/${orderId}/status`,
+        `https://cosmetic-backend-e6ia.onrender.com/Vendor-Orders/${orderId}/status`,
         { status },
         {
           headers: authHeaders,

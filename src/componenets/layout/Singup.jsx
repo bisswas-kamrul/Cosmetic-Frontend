@@ -18,16 +18,19 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post("http://localhost:4000/signup", {
-        name,
-        lastName,
-        email,
-        password,
-        role,
-        storeName,
-        phone,
-        address,
-      });
+      const { data } = await axios.post(
+        "https://cosmetic-backend-e6ia.onrender.com/signup",
+        {
+          name,
+          lastName,
+          email,
+          password,
+          role,
+          storeName,
+          phone,
+          address,
+        },
+      );
 
       alert(data.message);
 
