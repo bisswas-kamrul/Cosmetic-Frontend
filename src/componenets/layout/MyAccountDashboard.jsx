@@ -99,7 +99,7 @@ const MyAccountDashboard = () => {
           <img
             src={
               user?.avatar ||
-              "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              "https://cosmetic-backend-e6ia.onrender.com/update-profile"
             }
             alt="profile"
             className="w-24 h-24 rounded-full border-4 border-blue-500 object-cover"
