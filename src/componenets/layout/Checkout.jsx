@@ -135,7 +135,7 @@ const Checkout = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // 🔥 IMPORTANT
+            Authorization: `Bearer ${token}`, // IMPORTANT
           },
           body: JSON.stringify(orderData),
         },
