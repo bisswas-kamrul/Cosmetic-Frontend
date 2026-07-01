@@ -22,6 +22,7 @@ import Wishlist from "./componenets/layout/Wishlist";
 import Notifications from "./componenets/layout/Notifications";
 import Security from "./componenets/layout/Security";
 import Settings from "./componenets/layout/Settings";
+import AiChatWidget from "./componenets/layout/AiChatWidget";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/Settings" element={<Settings />} />
         </Route>
       </Routes>
+      <AiChatWidget />
     </>
   );
 }
