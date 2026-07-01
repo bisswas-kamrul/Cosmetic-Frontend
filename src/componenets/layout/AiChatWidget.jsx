@@ -9,7 +9,9 @@ const API_URL = "https://cosmetic-backend-e6ia.onrender.com";
 const createInitialMessage = (welcomeMessage) => ({
   id: Date.now(),
   sender: "assistant",
-  text: welcomeMessage || "Hi! I can help with products, prices, shipping, returns, and checkout.",
+  text:
+    welcomeMessage ||
+    "Hi! I can help with products, prices, shipping, returns, and checkout.",
 });
 
 const AiChatWidget = () => {
@@ -19,7 +21,8 @@ const AiChatWidget = () => {
   const [loading, setLoading] = useState(false);
   const [settings, setSettings] = useState({
     enabled: true,
-    welcomeMessage: "Hi! I can help with products, prices, shipping, returns, and checkout.",
+    welcomeMessage:
+      "Hi! I can help with products, prices, shipping, returns, and checkout.",
     suggestedQuestions: [],
   });
   const messagesEndRef = useRef(null);
@@ -32,7 +35,11 @@ const AiChatWidget = () => {
         setMessages([createInitialMessage(data.welcomeMessage)]);
       } catch (error) {
         console.error("Failed to load AI settings", error);
-        setMessages([createInitialMessage("Hi! I can help with products, prices, shipping, returns, and checkout.")]);
+        setMessages([
+          createInitialMessage(
+            "Hi! I can help with products, prices, shipping, returns, and checkout.",
+          ),
+        ]);
       }
     };
 
@@ -43,7 +50,10 @@ const AiChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  const suggestedQuestions = useMemo(() => settings.suggestedQuestions || [], [settings.suggestedQuestions]);
+  const suggestedQuestions = useMemo(
+    () => settings.suggestedQuestions || [],
+    [settings.suggestedQuestions],
+  );
 
   const handleSend = async (messageText = input) => {
     const trimmed = messageText.trim();
@@ -62,11 +72,15 @@ const AiChatWidget = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post(`${API_URL}/ai/chat`, { message: trimmed });
+      const { data } = await axios.post(`${API_URL}/ai/chat`, {
+        message: trimmed,
+      });
       const assistantMessage = {
         id: Date.now() + 1,
         sender: "assistant",
-        text: data.reply || "I can help with products, prices, shipping, returns, and checkout.",
+        text:
+          data.reply ||
+          "I can help with products, prices, shipping, returns, and checkout.",
       };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (error) {
@@ -140,8 +154,14 @@ const AiChatWidget = () => {
                     <div className="rounded-2xl bg-white px-3 py-2 text-sm text-zinc-700 shadow-sm dark:bg-zinc-800 dark:text-zinc-200">
                       <div className="flex items-center gap-2">
                         <span className="h-2 w-2 animate-bounce rounded-full bg-black dark:bg-white" />
-                        <span className="h-2 w-2 animate-bounce rounded-full bg-black/70 dark:bg-white/70" style={{ animationDelay: "0.15s" }} />
-                        <span className="h-2 w-2 animate-bounce rounded-full bg-black/40 dark:bg-white/40" style={{ animationDelay: "0.3s" }} />
+                        <span
+                          className="h-2 w-2 animate-bounce rounded-full bg-black/70 dark:bg-white/70"
+                          style={{ animationDelay: "0.15s" }}
+                        />
+                        <span
+                          className="h-2 w-2 animate-bounce rounded-full bg-black/40 dark:bg-white/40"
+                          style={{ animationDelay: "0.3s" }}
+                        />
                       </div>
                     </div>
                   </div>
